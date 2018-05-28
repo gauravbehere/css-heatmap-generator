@@ -128,7 +128,7 @@ glob(sourcePath + "/**/*.css", (error, files) => {
                         let allRulesHTML = json2html.transform(allRulesArray, rulesTemplate);
                         fs.writeFile(targetPath + "\\cssHeatMap.html", allRulesHTML, (err) => {
                             if (err) throw err;
-                            console.log('CSS HeatMap Generated: ' + targetPath + "\cssHeatMap.html");
+                            console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMap.html");
                         });
                     });
                 });
