@@ -1,13 +1,7 @@
 # css-heatmap-generator
 Utility to build CSS heat map
 
-# usage
-
-"devDependencies": {
-
-        "css-heatmap-generator": "git+https://github5.cisco.com/gbehere/css-dependency-graph.git"
-        
-}
+# installation
 
 > npm install css-heatmap-generator
 
