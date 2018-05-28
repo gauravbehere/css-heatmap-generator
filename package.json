@@ -3,8 +3,10 @@
     "version": "1.0.0",
     "author": "gaurav.techgeek@gmail.com",
     "description": "Utility to build CSS heatmap graph",
+    "homepage": "https://github.com/gauravbehere/css-heatmap-generator",
+    "license" : "MIT",
     "scripts": {
-        "buildCSSGraph": "node index.js"
+        "buildCSSHeatMap": "node index.js"
     },
     "bin": {
         "css-heapmap-generator": "./index.js"
