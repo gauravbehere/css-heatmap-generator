@@ -1,6 +1,6 @@
 {
     "name": "css-heatmap-generator",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "gaurav.techgeek@gmail.com",
     "description": "Utility to build CSS heatmap graph",
     "homepage": "https://github.com/gauravbehere/css-heatmap-generator",
