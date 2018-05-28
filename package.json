@@ -7,7 +7,7 @@
       "buildCSSGraph": "node index.js"  
     },
 	"bin": {
-        "css-dependency-graph": "./index.js"
+        "css-heapmap-generator": "./index.js"
     },
     "dependencies": {
         "glob": "^7.1.2",
