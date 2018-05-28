@@ -1,15 +1,15 @@
-# css-dependency-graph
-Utility to build CSS dependency graph
+# css-heatmap-generator
+Utility to build CSS heat map
 
 # usage
 
 "devDependencies": {
 
-        "css-dependency-graph": "git+https://github5.cisco.com/gbehere/css-dependency-graph.git"
+        "css-heatmap-generator": "git+https://github5.cisco.com/gbehere/css-dependency-graph.git"
         
 }
 
-> npm install css-dependency-graph
+> npm install css-heatmap-generator
 
 # configuration
 
@@ -25,7 +25,7 @@ module.exports = {
 }
 
 
-Save this as cssDependencyGraph.conf.js next to node_modules folder
+Save this as cssHeatMap.conf.js next to node_modules folder
 
 # command
 
@@ -33,7 +33,7 @@ Add this to your package.json:
 
 "scripts": {
 
-        "buildCSSGraph": "node ./node_modules/css-dependency-graph"
+        "buildCSSGraph": "node ./node_modules/css-heatmap-generator"
         
 }
 
