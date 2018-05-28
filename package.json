@@ -1,0 +1,16 @@
+{
+    "name": "css-heatmap-generator",
+    "version": "1.0.0",
+    "author": "gaurav.techgeek@gmail.com",
+    "description": "Utility to build CSS heatmap graph",
+    "scripts":{
+      "buildCSSGraph": "node index.js"  
+    },
+	"bin": {
+        "css-dependency-graph": "./index.js"
+    },
+    "dependencies": {
+        "glob": "^7.1.2",
+        "node-json2html": "^1.2.0"
+    }   
+}
