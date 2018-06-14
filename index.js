@@ -141,7 +141,7 @@ glob(sourcePath + "/**/*.css", (error, files) => {
                                 });
                             }
                         }
-                        fs.readFile("./templates/cssHeatMap.html", { encoding: "utf8" }, function (err, data) {
+                        fs.readFile(__dirname+"/templates/cssHeatMap.html", { encoding: "utf8" }, function (err, data) {
                             fs.writeFile(targetPath + "\\cssHeatMap.html", data, (err) => {
                                 if (err) throw err;
                                 console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMap.html");
