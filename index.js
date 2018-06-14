@@ -1,5 +1,5 @@
 /**
-*   "css-heatmap-generator v 1.0.0",
+*   "css-heatmap-generator v 1.0.4",
 *   "author": "gaurav.techgeek@gmail.com",
 *   "description": "Utility to build css heat map"
 */
@@ -9,6 +9,7 @@ const glob = require('glob');
 const path = require('path');
 var json2html = require('node-json2html');
 let globalRuleSet = {};
+let cssHeatMap = {};
 const options = require('../../cssHeatMap.conf');
 const sourcePath = path.resolve(__dirname, options.sourcePath);
 const excludeDirs = options.excludeDirs;
@@ -20,7 +21,7 @@ const rulesTemplate = {
     "<>": "div",
     "style": function () {
         if (options.showSensitveOnly) {
-            if (this.senistivity < 2) {
+            if (this.sensitivity < 2) {
                 return "display:none";
             }
         }
@@ -62,7 +63,7 @@ const rulesTemplate = {
     }, {
         "<>": "span",
         "style": function () {
-            if (this.senistivity > 1) {
+            if (this.sensitivity > 1) {
                 return ('border-radius:2px; background-color: red; color: white');
             } else {
                 return ('display:none');
@@ -84,6 +85,15 @@ let putUsageInGlobalRuleSet = (rule, filename) => {
     }
     else {
         globalRuleSet[rule].usage = [filename];
+    }
+}
+
+let putSensitiveRuleInCSSSet = (cssFileName, rule) => {
+    if (cssHeatMap[cssFileName]) {
+        cssHeatMap[cssFileName].push(rule);
+    }
+    else {
+        cssHeatMap[cssFileName] = [rule];
     }
 }
 
@@ -123,12 +133,33 @@ glob(sourcePath + "/**/*.css", (error, files) => {
                             let isDuplicate = globalRuleSet[key].files.length > 1 ? true : false;
                             let usage = globalRuleSet[key].usage && globalRuleSet[key].usage.length > 1 ? globalRuleSet[key].usage.join("<br>") : globalRuleSet[key].usage;
                             let files = globalRuleSet[key].files && globalRuleSet[key].files.join("<br>");
-                            allRulesArray.push({ rule: key, files: files, usage: usage, isDuplicate: isDuplicate, senistivity: usage ? usage.length : 0 });
+                            let ruleObj = { rule: key, files: files, usage: usage, isDuplicate: isDuplicate, sensitivity: usage && globalRuleSet[key].usage.length > 0 ? globalRuleSet[key].usage.length : 0 };
+                            allRulesArray.push(ruleObj);
+                            if(ruleObj.sensitivity > 1){
+                                ruleObj.files.split("<br>").forEach((filename)=>{
+                                    putSensitiveRuleInCSSSet(filename, ruleObj);
+                                });
+                            }
                         }
-                        let allRulesHTML = json2html.transform(allRulesArray, rulesTemplate);
-                        fs.writeFile(targetPath + "\\cssHeatMap.html", allRulesHTML, (err) => {
+                        fs.readFile("./templates/cssHeatMap.html", { encoding: "utf8" }, function (err, data) {
+                            fs.writeFile(targetPath + "\\cssHeatMap.html", data, (err) => {
+                                if (err) throw err;
+                                console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMap.html");
+                            });
+                        });
+                        
+                        fs.writeFile(targetPath + "\\cssHeatMapData.js", "var heatMapData=" + JSON.stringify(cssHeatMap), (err) => {
                             if (err) throw err;
-                            console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMap.html");
+                            //console.log('CSS HeatMap Data Generated: ' + targetPath + "\\cssHeatMapData.json");
+                        });
+                        fs.writeFile(targetPath + "\\cssHeatMapTable.js", "var heatMapData=" + JSON.stringify(allRulesArray), (err) => {
+                            if (err) throw err;
+                            //console.log('CSS HeatMap Data Generated: ' + targetPath + "\\cssHeatMapTable.json");
+                        });
+                        let allRulesHTML = json2html.transform(allRulesArray, rulesTemplate);
+                        fs.writeFile(targetPath + "\\cssHeatMapTable.html", allRulesHTML, (err) => {
+                            if (err) throw err;
+                            console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMapTable.html");
                         });
                     });
                 });
