@@ -10,9 +10,13 @@ Utility to build CSS heat map
 module.exports = {
         
     "sourcePath": "", /* Path to the source code */    
+    
     "excludeDirs": [], /* List of directories to exclude like lib, thirdparty etc */
+    
     "showSensitveOnly": true, /* If true only results in sensitive rules in the report */    
+    
     "target": "" /* target folder where report needs to be generated */
+
 }
 </code>
 
@@ -24,7 +28,9 @@ Add this to your package.json:
 
 <code>
 "scripts": {
+
         "buildCSSGraph": "node ./node_modules/css-heatmap-generator"    
+
 }
 </code>
 Run:
