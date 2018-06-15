@@ -1,5 +1,5 @@
 /**
-*   "css-heatmap-generator v 1.0.4",
+*   "css-heatmap-generator v 1.0.5",
 *   "author": "gaurav.techgeek@gmail.com",
 *   "description": "Utility to build css heat map"
 */
