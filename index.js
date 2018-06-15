@@ -142,22 +142,22 @@ glob(sourcePath + "/**/*.css", (error, files) => {
                             }
                         }
                         fs.readFile(__dirname+"/templates/cssHeatMap.html", { encoding: "utf8" }, function (err, data) {
-                            fs.writeFile(targetPath + "\\cssHeatMap.html", data, (err) => {
+                            fs.writeFile(targetPath + path.sep + "cssHeatMap.html", data, (err) => {
                                 if (err) throw err;
                                 console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMap.html");
                             });
                         });
                         
-                        fs.writeFile(targetPath + "\\cssHeatMapData.js", "var heatMapData=" + JSON.stringify(cssHeatMap), (err) => {
+                        fs.writeFile(targetPath + path.sep + "cssHeatMapData.js", "var heatMapData=" + JSON.stringify(cssHeatMap), (err) => {
                             if (err) throw err;
                             //console.log('CSS HeatMap Data Generated: ' + targetPath + "\\cssHeatMapData.json");
                         });
-                        fs.writeFile(targetPath + "\\cssHeatMapTable.js", "var heatMapData=" + JSON.stringify(allRulesArray), (err) => {
+                        fs.writeFile(targetPath + path.sep + "cssHeatMapTable.js", "var heatMapData=" + JSON.stringify(allRulesArray), (err) => {
                             if (err) throw err;
                             //console.log('CSS HeatMap Data Generated: ' + targetPath + "\\cssHeatMapTable.json");
                         });
                         let allRulesHTML = json2html.transform(allRulesArray, rulesTemplate);
-                        fs.writeFile(targetPath + "\\cssHeatMapTable.html", allRulesHTML, (err) => {
+                        fs.writeFile(targetPath + path.sep + "cssHeatMapTable.html", allRulesHTML, (err) => {
                             if (err) throw err;
                             console.log('CSS HeatMap Generated: ' + targetPath + "\\cssHeatMapTable.html");
                         });

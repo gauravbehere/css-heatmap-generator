@@ -33,8 +33,9 @@ Add this to your package.json:
 
 }
 </code>
-Run:
 
+
+Run:
 <code>npm run buildCSSGraph</code> as part of your build process.
 
 # output
