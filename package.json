@@ -1,10 +1,11 @@
 {
     "name": "css-heatmap-generator",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": "gaurav.techgeek@gmail.com",
     "description": "Utility to build CSS heatmap graph",
     "homepage": "https://github.com/gauravbehere/css-heatmap-generator",
     "license": "MIT",
+    "keywords": ["CSS Heat Map","CSS Visualization","CSS Usage","CSS Graph","UI Regression Testing","Duplicate CSS Rules","Optimize CSS"],
     "scripts": {
         "buildCSSHeatMap": "node index.js"
     },
