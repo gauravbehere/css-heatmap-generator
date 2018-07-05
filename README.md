@@ -50,7 +50,7 @@ npm run buildCSSGraph
 ``` 
 
 # Output
-In the target folder specifed, there will be a repors generated.
+In the target folder specifed, there will be a reports generated.
 'cssHeatMap', displayes the heat map in graphical format using d3, where 'cssHeatMapTable' represents the same with more details in tabular format.
 The JSON data is also generated in target folder, allowing customization of reports.
 
